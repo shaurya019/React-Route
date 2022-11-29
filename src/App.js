@@ -9,7 +9,9 @@ import NewProducts from './components/NewProducts'
 import Users from './components/Users'
 import Admin from './components/Admin'
 import UserDetails from './components/UserDetails'
+import Profile from './components/Profile'
 import OrderSummary from './components/OrderSummary'
+import { RequireAuth } from './components/RequireAuth'
 function App() {
   return (
     <>
@@ -24,6 +26,15 @@ function App() {
       <Route path='featured' element={<FeaturedProducts />}  />
       <Route path='new' element={<NewProducts />}  />
       </Route>
+      <Route path='/login' element={<Login />} />
+        <Route
+          path='/profile'
+          element={
+            <RequireAuth>
+              <Profile />
+            </RequireAuth>
+          }
+        />
       <Route path='users' element={<Users />} exact />
       <Route path='users/:userId' element={<UserDetails />} exact />
       <Route path='users/admin' element={<Admin />} exact />
